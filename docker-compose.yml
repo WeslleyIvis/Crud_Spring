@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16 # Ou a versão que você está usando
+    container_name: meu-postgres-app
+    restart: always
+    environment:
+      POSTGRES_DB: postdb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: "1234" # Use aspas para senhas, apenas por segurança na YAML
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data # Garanta que o volume está mapeado
+volumes:
+  db_data: # Definição do volume nomeado
